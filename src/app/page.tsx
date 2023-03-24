@@ -8,11 +8,20 @@ import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import ContactMe from "./components/ContactMe";
 import Image from "next/image";
-import Link from "next/link";
+import { GetStaticProps } from "next";
+import { fetchExperiences, fetchPageInfo, fetchProjects, fetchSkills, fetchSocials } from "@/helpers/fetchFromEndpoints";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+type Props = {
+  pageInfo: PageInfo;
+  experiences: Experience[];
+  skills: Technology[];
+  projects: Project[];
+  socials: Social[];
+}
+
+export const Home = ({ pageInfo, experiences, projects, skills, socials }: Props) => {
   return (
     <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-scroll z-0 overflow-y-scroll overflow-x-hidden scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80">
       <Header />
@@ -46,4 +55,21 @@ export default function Home() {
       </main> 
     </div>
   );
+}
+export default Home;
+
+
+export const getStaticProps: GetStaticProps<Props> = async() => {
+  const pageInfo = await fetchPageInfo();
+  const experiences = await fetchExperiences();
+  const projects = await fetchProjects();
+  const skills = await fetchSkills();
+  const socials = await fetchSocials();
+
+  return {
+    props: {
+      pageInfo, experiences, projects, skills, socials
+    },
+    revalidate: 10
+  }
 }

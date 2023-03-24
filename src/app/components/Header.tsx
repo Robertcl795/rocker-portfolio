@@ -56,19 +56,18 @@ const Header = ({}: Props) => {
         ))}
       </motion.div>
 
-      <a className="" href="#contact">
         <motion.div {...getItemsAnimationProps(1)}>
           <SocialIcon
             className="cursor-pointer"
             network="email"
             fgColor="gray"
             bgColor="transparent"
+            url="#contact"
           />
-          <p className="uppercase hidden md:inline-flex text-sm text-gray-400">
+          <a href="#contact" className="uppercase hidden md:inline-flex text-sm text-gray-400">
             Get in Touch
-          </p>
+          </a>
         </motion.div>
-      </a>
     </header>
   );
 };
