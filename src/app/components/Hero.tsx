@@ -3,6 +3,7 @@
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BgdCircles from "./BgdCircles";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   const [text] = useTypewriter({
@@ -34,10 +35,10 @@ export default function Hero() {
           <Cursor cursorColor="#F7AB0A" />
         </h1>
         <div className="pt-5">
-          <button className="heroButton">About</button>
-          <button className="heroButton">Experience</button>
-          <button className="heroButton">Skills</button>
-          <button className="heroButton">Projects</button>
+          <a href="#about" className="heroButton">About</a>
+          <a href="#experience" className="heroButton">Experience</a>
+          <a href="#skills" className="heroButton">Skills</a>
+          <a href="#projects" className="heroButton">Projects</a>
         </div>
       </div>
     </div>
