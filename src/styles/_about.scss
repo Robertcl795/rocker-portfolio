@@ -1,0 +1,11 @@
+.aboutSection {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: 3rem repeat(2, 1fr);
+    grid-gap: 0px;
+    @apply relative h-screen text-center md:text-left md:flex-row max-w-7xl p-10 mx-auto items-center;
+    
+    > .aboutHeader { grid-area: 1 / 1 / 2 / 3; justify-self: center; }
+    > .aboutImage { grid-area: 2 / 1 / 4 / 2; }
+    > .aboutDescription { grid-area: 2 / 2 / 4 / 3; } 
+}

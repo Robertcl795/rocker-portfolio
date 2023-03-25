@@ -1,0 +1,15 @@
+.projectsSection {
+    grid-template-columns: 2fr;
+    grid-template-rows: 3rem 1fr;
+    grid-gap: 0px;
+    @apply h-screen relative text-center md:text-left max-w-full justify-evenly mx-auto items-center z-0 p-10;
+    > .projectsHeader {
+        grid-area: 1 / 1 / 2 / 3; 
+        @apply uppercase tracking-[20px] text-gray-500 text-2xl text-center;
+    }
+    > .projectsCarousel { 
+        grid-area: 2 / 1 / 4 / 2; 
+        @apply relative w-full overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-10 scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80 scrollbar-thin;
+    }
+    
+}
