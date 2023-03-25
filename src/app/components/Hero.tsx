@@ -1,11 +1,15 @@
 "use client";
 
 import { Cursor, useTypewriter } from "react-simple-typewriter";
+import { urlFor } from '@/helpers/sanity';
 import BgdCircles from "./BgdCircles";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Hero() {
+type Props = {
+  pageInfo: PageInfo
+}
+export default function Hero({ pageInfo }: Props) {
   const [text] = useTypewriter({
     words: [
       "Hi, i'm Robert Carrillo!",
@@ -22,7 +26,7 @@ export default function Hero() {
       <Image
         className="relative rounded-full h-32 w-32 items-center justify-center"
         alt="Hero Image"
-        src="/profile.jpg"
+        src={urlFor(pageInfo?.heroImage).url()}
         width={400}
         height={400}
       />

@@ -1,26 +1,7 @@
 "use client";
 import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
-import Link from "next/link";
 
-const socials = [
-  {
-    description: "LinkedIn URL",
-    url: "https://www.linkedin.com/in/robertocarrillo95/",
-  },
-  {
-    description: "Facebook URL",
-    url: "https://www.facebook.com/RockerLab/",
-  },
-  {
-    description: "Github URL",
-    url: "https://github.com/robertcl795",
-  },
-  {
-    description: "Youtube URL",
-    url: "https://www.youtube.com/@rocker-labs",
-  },
-];
 
 const getItemsAnimationProps = (xDir: 1 | -1) => ({
   initial: {
@@ -38,36 +19,43 @@ const getItemsAnimationProps = (xDir: 1 | -1) => ({
   },
 });
 
-type Props = {};
-const Header = ({}: Props) => {
+type Props = {
+  socials: Social[]
+};
+const Header = ({ socials }: Props) => {
   return (
     <header className="sticky top-0 px-5 flex items-start justify-between max-w-7-xl mx-auto z-20 xl:items-center">
       <motion.div
         {...getItemsAnimationProps(-1)}
         className="flex flex-row items-center"
       >
-        {socials.map(({ description, url }) => (
+        {socials.map(({ title, url }) => (
           <SocialIcon
-            key={`${description}`}
+            key={`${title}`}
             url={url}
             fgColor="gray"
             bgColor="transparent"
+            className="hover:bg-white focus:bg-white"    
           />
         ))}
       </motion.div>
 
-        <motion.div {...getItemsAnimationProps(1)}>
+        <motion.a {...getItemsAnimationProps(1)} 
+          className="hover:bg-white focus:bg-white cursor-pointer pr-3"
+          href="#contact"
+        >
           <SocialIcon
-            className="cursor-pointer"
+            className="" 
             network="email"
             fgColor="gray"
             bgColor="transparent"
             url="#contact"
+            
           />
-          <a href="#contact" className="uppercase hidden md:inline-flex text-sm text-gray-400">
+          <span  className="uppercase hidden md:inline-flex text-sm text-gray-400">
             Get in Touch
-          </a>
-        </motion.div>
+          </span>
+        </motion.a>
     </header>
   );
 };
