@@ -1,7 +1,6 @@
-"use client";
-import { SocialIcon } from "react-social-icons";
-import { motion } from "framer-motion";
-
+'use client';
+import { SocialIcon } from 'react-social-icons';
+import { motion } from 'framer-motion';
 
 const getItemsAnimationProps = (xDir: 1 | -1) => ({
   initial: {
@@ -19,43 +18,47 @@ const getItemsAnimationProps = (xDir: 1 | -1) => ({
   },
 });
 
+const sections = [
+  { title: 'About', url: '#about' },
+  { title: 'Experience', url: '#experience' },
+  { title: 'Skills', url: '#skills' },
+  { title: 'Contact', url: '#contact' },
+];
+
 type Props = {
-  socials: Social[]
+  socials: Social[];
 };
 const Header = ({ socials }: Props) => {
   return (
-    <header className="sticky top-0 px-5 flex items-start justify-between max-w-7-xl mx-auto z-20 xl:items-center">
+    <header className='sticky top-0 px-5 flex items-start justify-between max-w-7-xl mx-auto z-20 xl:items-center'>
       <motion.div
         {...getItemsAnimationProps(-1)}
-        className="flex flex-row items-center"
+        className='flex flex-row items-center'
       >
         {socials.map(({ title, url }) => (
           <SocialIcon
             key={`${title}`}
             url={url}
-            fgColor="gray"
-            bgColor="transparent"
-            className="hover:bg-white focus:bg-white"    
+            fgColor='gray'
+            bgColor='transparent'
+            className='hover:bg-ice-500 focus:bg-ice-500'
           />
         ))}
       </motion.div>
-
-        <motion.a {...getItemsAnimationProps(1)} 
-          className="hover:bg-white focus:bg-white cursor-pointer pr-3"
-          href="#contact"
-        >
-          <SocialIcon
-            className="" 
-            network="email"
-            fgColor="gray"
-            bgColor="transparent"
-            url="#contact"
-            
-          />
-          <span  className="uppercase hidden md:inline-flex text-sm text-gray-400">
-            Get in Touch
-          </span>
-        </motion.a>
+      <motion.div
+        {...getItemsAnimationProps(1)}
+        className='flex flex-row items-center'
+      >
+        {sections.map(({ title, url }) => (
+          <a
+            key={`${title}-${url}`}
+            className='hover:bg-ice-500 focus:bg-ice-500 hover:text-ice-900 focus:text-ice-900 cursor-pointer p-3 uppercase hidden md:inline-flex text-sm text-gray-400'
+            href={url}
+          >
+            {title}
+          </a>
+        ))}
+      </motion.div>
     </header>
   );
 };
