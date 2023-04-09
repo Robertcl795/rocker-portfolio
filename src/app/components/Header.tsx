@@ -1,6 +1,7 @@
 'use client';
 import { SocialIcon } from 'react-social-icons';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const getItemsAnimationProps = (xDir: 1 | -1) => ({
   initial: {
@@ -33,8 +34,11 @@ const Header = ({ socials }: Props) => {
     <header className='sticky top-0 px-5 flex items-start justify-between max-w-7-xl mx-auto z-20 xl:items-center'>
       <motion.div
         {...getItemsAnimationProps(-1)}
-        className='flex flex-row items-center'
+        className='flex flex-row items-center gap-1'
       >
+        <a href="#hero">
+          <Image className="h-10 w-10 rounded-full filter grayscale hover:grayscale-0 cursor-pointer" src="/profile.jpg" alt="Logo" width={200} height={200} />
+        </a>
         {socials.map(({ title, url }) => (
           <SocialIcon
             key={`${title}`}

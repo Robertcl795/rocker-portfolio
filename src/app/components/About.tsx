@@ -27,8 +27,8 @@ export default function About({ pageInfo }: Props) {
         alt="About me image" src={urlFor(pageInfo?.profilePic).url()} 
         className="aboutImage -mb-20 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover md:rounded-lg md:w-64 md:h-85 xl:w-[500px] xl:h-[600px]"/>
       <div className="aboutDescription space-y-10 px-0 md:px-10">
-        <h4 className='text-4xl font-semibold'>Here&apos;s my <span className='underline decoration-[#F7AB0A]/50'>life</span> story</h4>
-        <p className="text-sm">
+        <h4 className='sectionHeader'>Here&apos;s my <span className='underline text-ice-500'>life story</span></h4>
+        <p className="sectionText">
         {pageInfo.backgroundInformation}
         </p>
       </div>

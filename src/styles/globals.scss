@@ -8,14 +8,14 @@
 @import './skills';
 
 @layer components {
-  .heroButton {
-    @apply px-6 py-2 rounded-full uppercase text-sm
-    border border-[#242424] hover:border-[#F7AB04]/40 hover:text-[#F7AB04]/40
-    tracking-widest text-gray-500 transition-all;
+  .heroHeader {
+    @apply md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] text-ice-50 font-semibold;
   }
-  .contactInput {
-    @apply outline-none bg-slate-400/10 rounded-sm 
-    border-b px-6 py-4 border-[#242424] text-gray-500 placeholder-gray-500 
-    transition-all focus:border-[#F7AB0A]/50 focus:text-[#F7AB0A]/50 hover:border-[#F7AB0A]/50;
+  .sectionHeader {
+    @apply md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] font-semibold;
+  }
+  .sectionText {
+    @apply text-[17px] max-w-3xl leading-[30px];
   }
 }
+

@@ -29,11 +29,11 @@ export default function Hero({ pageInfo }: Props) {
       >
         <div className='flex flex-col justify-center items-center mt-5'>
           <div className='w-5 h-5 rounded-full bg-ice-600' />
-          <div className='w-1 sm:h-80 h-40 violet-gradient' />
+          <div className='w-1 sm:h-80 h-40 bg-gradient-to-b from-ice-500' />
         </div>
 
         <div>
-          <h1 className={`text-6xl text-ice-50`}>
+          <h1 className="heroHeader">
             Hi, I&apos;m <span className='text-ice-600'>Robert Rocker!</span>
           </h1>
           <p className={`text-3xl mt-2 text-ice-50`}>
@@ -56,7 +56,7 @@ export default function Hero({ pageInfo }: Props) {
                 repeat: Infinity,
                 repeatType: "loop",
               }}
-              className='w-3 h-3 rounded-full bg-secondary mb-1'
+              className='w-3 h-3 rounded-full bg-ice-500 mb-1'
             />
           </div>
         </a>

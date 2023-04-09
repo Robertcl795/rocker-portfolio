@@ -20,7 +20,7 @@ export const Home = async() => {
   const skills = await fetchSkills();
   const socials = await fetchSocials();
   return (
-    <div className="bg-darkBlue-950 text-white h-screen snap-y snap-mandatory overflow-scroll z-0 overflow-y-scroll overflow-x-hidden scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80">
+    <div className="bg-darkBlue-950 text-white h-screen snap-y snap-mandatory overflow-scroll z-0 overflow-y-scroll overflow-x-hidden scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-ice-500">
       <Header socials={socials} />
       <main>
         <section id="hero" className="snap-start">
@@ -42,13 +42,6 @@ export const Home = async() => {
           <ContactMe />
         </section>
 
-        <footer className="sticky bottom-5 w-full cursor-pointer">
-          <div className="flex items-center justify-center">
-            <a href="#hero">
-              <Image className="h-10 w-10 rounded-full filter grayscale hover:grayscale-0 cursor-pointer" src="/profile.jpg" alt="Logo" width={200} height={200} />
-            </a>
-          </div>
-        </footer>
       </main> 
     </div>
   );
