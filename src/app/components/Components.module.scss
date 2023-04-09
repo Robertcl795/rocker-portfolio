@@ -1,0 +1,12 @@
+.aboutSection {
+        display: grid;
+        grid-template-columns: 2fr 3fr;
+        grid-template-rows: 3rem repeat(2, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        height: 100vh;
+        
+        > .aboutHeader { grid-area: 1 / 1 / 2 / 3; }
+        > .aboutImage { grid-area: 2 / 1 / 4 / 2; }
+        > .aboutDescription { grid-area: 2 / 2 / 4 / 3; } 
+}
