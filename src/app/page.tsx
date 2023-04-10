@@ -41,7 +41,6 @@ export const Home = async() => {
         <section id="contact" className="snap-start">
           <ContactMe />
         </section>
-
       </main> 
     </div>
   );

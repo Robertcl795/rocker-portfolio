@@ -11,11 +11,25 @@
   .heroHeader {
     @apply md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] text-ice-50 font-semibold;
   }
+  section {
+    &.padding {
+      @apply sm:px-16 px-6 sm:py-16 py-10;
+    }
+    &.paddingX {
+      @apply sm:px-16 px-6;
+    }
+  }
   .sectionHeader {
     @apply md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] font-semibold;
   }
   .sectionText {
     @apply text-[17px] max-w-3xl leading-[30px];
+  }
+  .sectionTitle {
+    @apply top-24 uppercase tracking-[20px] text-gray-500 text-2xl text-center;
+  }
+  .sectionSubtitle {
+    @apply uppercase tracking-[3px] text-gray-500 text-sm text-center;
   }
 }
 

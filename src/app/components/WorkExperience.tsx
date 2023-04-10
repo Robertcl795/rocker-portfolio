@@ -1,24 +1,31 @@
-"use client";
+'use client';
 import { motion } from 'framer-motion';
 import ExperienceCard from './ExperienceCard';
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from 'react-vertical-timeline-component';
+import { textVariant } from '@/helpers/motion';
 
 type Props = {
-    experiences: Experience[]
-}
+  experiences: Experience[];
+};
 export default function WorkExperience({ experiences }: Props) {
+  return (
+    <motion.section className='experienceSection' variants={textVariant(100)}>
+      <p className={`text-center`}>What I have done so far</p>
+      <h3 className={`experienceHeader text-center`}>Work Experience.</h3>
 
-    return(
-        <motion.section 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1}}
-        transition={{ duration: 1.5 }}
-        className="experienceSection">
-            <h3 className='experienceHeader'>Experience</h3>
-            <div className="experienceCarousel">
-                {experiences.sort((exp1, exp2) => exp1.dateStarted > exp2.dateStarted ? 1 : -1).map((exp) => (
-                    <ExperienceCard key={exp._id} experience={exp} />
-                ))}
-            </div>
-        </motion.section>
-    )
+      <div className='mt-20 flex flex-col'>
+        <VerticalTimeline>
+          {experiences.map((experience, index) => (
+            <ExperienceCard
+              key={`experience-${index}`}
+              experience={experience}
+            />
+          ))}
+        </VerticalTimeline>
+      </div>
+    </motion.section>
+  );
 }

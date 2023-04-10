@@ -8,10 +8,10 @@ type Props = {
 export default function Skills({ skills }: Props) {
   return (
     <motion.div className="skillsSection">
-      <h3 className="skillsHeader">
+      <h3 className="skillsHeader sectionTitle">
         Skills
       </h3>
-      <h3 className="skillsHint">
+      <h3 className="skillsHint sectionSubtitle">
         Hover over a skill for current proficiency
       </h3>
       <div className="skillsGrid">

@@ -9,7 +9,7 @@ type Props = {
 export default function Projects({ projects }: Props) {
     return (
     <motion.div className="projectsSection">
-      <h3 className="projectsHeader ">
+      <h3 className="projectsHeader sectionTitle">
         Projects
       </h3>
       <motion.div className="projectsCarousel">

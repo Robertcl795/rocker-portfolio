@@ -1,47 +1,56 @@
-"use client";
-import { urlFor } from "@/helpers/sanity";
-import { motion } from "framer-motion";
-import Image from "next/image";
+'use client';
+import { urlFor } from '@/helpers/sanity';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { VerticalTimelineElement } from 'react-vertical-timeline-component';
 
 type Props = {
-  experience: Experience
-}
+  experience: Experience;
+};
 export default function ExperienceCard({ experience }: Props) {
   return (
-    <article
-      className="
-            flex flex-col rounded-lg items-center space-y-7 flex-shrink-0 w-[500px] md:w-[600px] xl:w-[900px] snap-center bg-[#292929] p-10 hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200 overflow-hidden
-        "
-    >
-      <motion.img
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1.5 }}
-        className="w-32 h-32 object-cover object-center xl:h-[200px] xl:w-[400px]"
-        src={urlFor(experience?.companyImage).url()}
-        alt="Experience card image"
-      />
-
-      <div className="px-0 md:px-10">
-        <h4 className="text-4xl font-light">{experience.jobTitle}</h4>
-        <p className="font-bold text-2xl mt-1">{experience.company}</p>
-        <div className="flex space-x-2 my-2">
-        { experience.technologies?.map(technology => (
-          <motion.img
-            key={`${experience._id}-${technology._id}`}
-            className="w-10 h-10 rounded-full object-cover object-center xl:h-[50px] xl:w-[50px]"
-            src={urlFor(technology.image).url()}
-            alt={`${technology.title} Logo`}
+    <VerticalTimelineElement
+      contentStyle={{
+        background: '#1d1836',
+        color: '#fff',
+      }}
+      contentArrowStyle={{ borderRight: '7px solid  #232631' }}
+      date={`${experience.dateStarted}-${experience.dateEnded || 'Current'}`}
+      iconStyle={{ background: '' }}
+      icon={
+        <div className='flex justify-center items-center w-full h-full'>
+          <Image
+            src={urlFor(experience.companyImage).url()}
+            alt={experience.company}
+            className='w-[60px] h-[60px] object-contain'
+            width={200}
+            height={200}
           />
-        ))}
         </div>
-        <p>{`Started working ${experience.dateStarted} - ${experience.isCurrentlyWorkingHere ? "Currently Working here" : `Ended in ${experience.dateEnded}`}`}</p>
-        <ul className="list-disc space-y-4 ml-5 text-lg">
-            {experience.points.map((point, i) => (
-              <li key={`point-${i}`}>{point}</li>
-            ))}
-        </ul>
+      }
+    >
+      <div>
+        <h3 className='text-white text-[24px] font-bold'>
+          {experience.jobTitle}
+        </h3>
+        <p
+          className='text-secondary text-[16px] font-semibold'
+          style={{ margin: 0 }}
+        >
+          {experience.company}
+        </p>
       </div>
-    </article>
+
+      <ul className='mt-5 list-disc ml-5 space-y-2'>
+        {experience.points.map((point, index) => (
+          <li
+            key={`experience-point-${index}`}
+            className='text-white-100 text-[14px] pl-1 tracking-wider'
+          >
+            {point}
+          </li>
+        ))}
+      </ul>
+    </VerticalTimelineElement>
   );
 }
