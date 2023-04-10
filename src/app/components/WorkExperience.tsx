@@ -12,7 +12,7 @@ type Props = {
 };
 export default function WorkExperience({ experiences }: Props) {
   return (
-    <motion.section className='experienceSection' variants={textVariant(100)}>
+    <motion.section className='padding' variants={textVariant(100)}>
       <p className={`text-center`}>What I have done so far</p>
       <h3 className={`experienceHeader text-center`}>Work Experience.</h3>
 

@@ -23,6 +23,7 @@ const sections = [
   { title: 'About', url: '#about' },
   { title: 'Experience', url: '#experience' },
   { title: 'Skills', url: '#skills' },
+  { title: 'Projects', url: '#projects' },
   { title: 'Contact', url: '#contact' },
 ];
 

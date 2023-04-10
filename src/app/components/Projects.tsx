@@ -1,4 +1,5 @@
 "use client";
+import { fadeIn, textVariant } from '@/helpers/motion';
 import { urlFor } from "@/helpers/sanity";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -6,43 +7,91 @@ import Image from "next/image";
 type Props = {
   projects: Project[]
 }
-export default function Projects({ projects }: Props) {
-    return (
-    <motion.div className="projectsSection">
-      <h3 className="projectsHeader sectionTitle">
-        Projects
-      </h3>
-      <motion.div className="projectsCarousel">
-        {projects.map(({ _id, image, linkToBuild, summary, technologies, title }, index) => (
-          <div
-            className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen"
-            key={_id}
-          >
-            <motion.img
-              initial={{ y: -100, opacity: 0 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2 }}
-              src={urlFor(image).url()}
-              alt={`${title} project image`}
-              className="xl:h-[400px] xl:w-[750px]"
-            />
-            <div className="space-y-10 px-0 md:px-10 max-w-6xl">
-              <h4 className="text-4xl font-semibold text-center">
-                <span className="underline decoration-[#F7AB0A]/50">
-                  Case Study {index + 1} of {projects.length}
-                </span>{" "}
-                {title}
-              </h4>
 
-              <p className="text-lg text-center md:text-left">
-                {summary}
-              </p>
+const ProjectCard = ({
+  image,
+  linkToBuild,
+  summary,
+  technologies,
+  title,
+}: Project, index: number) => {
+  return (
+    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+      <div
+        className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full'
+      >
+        <div className='relative w-full h-[230px]'>
+          <Image
+            src={urlFor(image).url()}
+            alt='project_image'
+            className='w-full h-full object-cover rounded-2xl'
+            width={200}
+            height={200}
+          />
+
+          <div className='absolute inset-0 flex justify-end m-3 card-img_hover'>
+            <div
+              onClick={() => window.open(linkToBuild, "_blank")}
+              className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
+            >
+              <Image
+                src="/github.png"
+                alt='source code'
+                className='w-1/2 h-1/2 object-contain'
+                width={200}
+                height={200}
+              />
             </div>
           </div>
-        ))}
-      </motion.div>
-      <div className="w-full absolute top-[30%] bg-[#F7AB0A]/10 left-0 h-[500px] -skew-y-12 "></div>
+        </div>
+
+        <div className='mt-5'>
+          <h3 className='text-white font-bold text-[24px]'>{title}</h3>
+          <p className='mt-2 text-secondary text-[14px]'>{summary}</p>
+        </div>
+
+        <div className='mt-4 flex flex-wrap gap-2'>
+          {technologies.map((tech) => (
+            <p
+              key={`${name}-${tech.title}`}
+              className={`text-[14px] bg-ice-500`}
+            >
+              #{tech.title}
+            </p>
+          ))}
+        </div>
+      </div>
     </motion.div>
   );
-}
+};
+
+const Projects = ({projects}: Props) => {
+  return (
+    <>
+      <motion.div variants={textVariant(100)}>
+        <p className={`sectionSubtitle `}>My work</p>
+        <h2 className={`sectionHeader`}>Projects.</h2>
+      </motion.div>
+
+      <div className='w-full flex'>
+        <motion.p
+          variants={fadeIn("up", "spring", 0.1, 1)}
+          className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
+        >
+          Following projects showcases my skills and experience through
+          real-world examples of my work. Each project is briefly described with
+          links to code repositories and live demos in it. It reflects my
+          ability to solve complex problems, work with different technologies,
+          and manage projects effectively.
+        </motion.p>
+      </div>
+
+      <div className='mt-20 flex flex-wrap gap-7'>
+        {projects.map((project, index) => (
+          <ProjectCard key={`project-${index}`} {...project} />
+        ))}
+      </div>
+    </>
+  );
+};
+export default Projects;
